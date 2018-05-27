@@ -3,12 +3,17 @@ import gql from "graphql-tag";
 import { graphql, compose } from "react-apollo";
 import { Link, hashHistory } from "react-router";
 import query from '../queries/fetchProduct';
+import productQuery from "../queries/fetchSingleProduct";
 
 
 class ProductDetail extends Component {
     constructor(props) {
         super(props);
         this.deleteProduct = this.deleteProduct.bind(this)
+    }
+
+    componentWillReceiveProps(nextProp){
+        this.props.data.refetch();
     }
 
     deleteProduct(event) {
@@ -52,11 +57,12 @@ class ProductDetail extends Component {
                 >
                     <i className="material-icons">delete</i>
                 </button>
-                <button
+                <Link
+                to={`/product/${this.props.data.product.id}/edit`}
                     className="btn-floating btn-large blue left"
                 >
                     <i className="material-icons">edit</i>
-                </button>
+                </Link>
             </div>
         )
     }
@@ -69,19 +75,6 @@ mutation DeleteProduct($id: ID!){
       name
     }
   }`
-
-const productQuery = gql`
-query Product($id:ID!){
-    product(id: $id){
-      id
-      name
-      price
-      url
-      vendor
-      picture
-    }
-  }
-`;
 
 export default compose(
     graphql(mutation),

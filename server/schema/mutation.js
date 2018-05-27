@@ -31,6 +31,21 @@ const mutation = new GraphQLObjectType({
                 return (new Product(args)).save()
             }
         },
+        editProduct: {
+            type: ProductType,
+            args: {
+                id: { type: new GraphQLNonNull(GraphQLID) },
+                name: { type: GraphQLString },
+                price: { type: GraphQLFloat },
+                quantity: { type: GraphQLInt },
+                url: { type: GraphQLString },
+                picture: { type: GraphQLString },
+                vendor: { type: GraphQLString }
+            },
+            resolve(parentValue, args){
+                return Product.findByIdAndUpdate(args.id, args, {new: true});
+            }
+        },
       deleteProduct: {
         type: ProductType,
         args: { id: { type: GraphQLID } },

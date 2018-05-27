@@ -7,6 +7,7 @@ import App from "./component/App";
 import ProductList from "./component/ProductList";
 import AddProduct from "./component/AddProduct";
 import ProductDetail from "./component/ProductDetail";
+import UpdateProduct from "./component/UpdateProduct";
 
 const client = new ApolloClient({})
 
@@ -19,6 +20,7 @@ const Root = () => {
           <IndexRoute component = {ProductList}/>
           <Route path="/product/new" component ={AddProduct}/>
           <Route path="/product/:id" component ={ProductDetail}/>
+          <Route path="/product/:id/edit" component ={UpdateProduct}/>
         </Route>        
       </Router>
     </ApolloProvider>

@@ -50,7 +50,6 @@ class AddProduct extends Component {
         }).then(data => {
             hashHistory.push("/")
         });
-
     }
 
     render() {
