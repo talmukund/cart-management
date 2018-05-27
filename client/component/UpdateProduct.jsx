@@ -44,7 +44,6 @@ class UpdateProduct extends Component {
                 vendor: this.state.vendor
             }
         }).then(data => {
-            this.props.data.refetch()
             hashHistory.push(`/product/${this.props.data.product.id}`)
         });
     }

@@ -7,11 +7,14 @@ module.exports = {
     path: '/',
     filename: 'bundle.js'
   },
+  resolve: {
+    extensions: ['.json', '.js', '.jsx']
+  },
   module: {
     rules: [
       {
         use: 'babel-loader',
-        test: /\.js$/,
+        test: /\.(js|jsx)$/,
         exclude: /node_modules/
       },
       {
