@@ -15,6 +15,7 @@ class ProductList extends Component {
 
         return (
             <div>
+                <h3>Product List</h3>
                 <ul className="collection">
                     {this.props.data.products.map(product => {
                         return (
@@ -25,10 +26,10 @@ class ProductList extends Component {
                     })}
                 </ul>
                 <Link
-                    to="/createsong"
+                    to="/product/new"
                     className="btn-floating btn-large red right"
                 >
-                    <i className="material-icons">+</i>
+                    <i className="material-icons">add</i>
                 </Link>
             </div>
         )

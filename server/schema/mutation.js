@@ -31,7 +31,7 @@ const mutation = new GraphQLObjectType({
                 return (new Product(args)).save()
             }
         },
-      deleteSong: {
+      deleteProduct: {
         type: ProductType,
         args: { id: { type: GraphQLID } },
         resolve(parentValue, { id }) {
