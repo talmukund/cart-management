@@ -1,11 +1,10 @@
 import React, { Component } from "react";
 import gql from "graphql-tag";
 import { graphql } from "react-apollo";
-import { Link } from "react-router";
+import { Link, hashHistory } from "react-router";
 import query from '../queries/fetchProduct';
 
 class ProductList extends Component {
-    
     render() {
         if (this.props.data.loading) {
             return (
@@ -19,9 +18,9 @@ class ProductList extends Component {
                 <ul className="collection">
                     {this.props.data.products.map(product => {
                         return (
-                            <li key={product.id} className="collection-item">
+                            <Link to={`/product/${product.id}`} key={product.id} className="collection-item">
                                 {product.name}
-                            </li>
+                            </Link>
                         )
                     })}
                 </ul>

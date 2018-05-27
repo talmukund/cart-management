@@ -48,7 +48,6 @@ class AddProduct extends Component {
             },
             refetchQueries: [{ query }]
         }).then(data => {
-            console.log(data);
             hashHistory.push("/")
         });
 
